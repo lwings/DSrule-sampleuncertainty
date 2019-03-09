@@ -9,7 +9,7 @@
 \usepackage{algorithm} %format of the algorithm 
 \usepackage{algorithmic} %format of the algorithm 
 \usepackage{multirow} %multirow for format of table 
-\usepackage{amsmath} 
+\usepackage{amsmath}
 \usepackage{xcolor}
 \renewcommand{\algorithmicrequire}{\textbf{Input:}} 
 \renewcommand{\algorithmicensure}{\textbf{Output:}}
@@ -58,25 +58,25 @@ The abstract should briefly summarize the contents of the paper in
 % \subsection{A Subsection Sample}
 Classification is the problem of identifying to which a set if categories or sub-populations a new observation belongs, on the basis of a training set of data containing observations or instance whose category membership is known. In many domain, especially for big data and image recognition, classification has become a most hot and significant topic of research~\cite{ref_article1}.In a training set, the information and features of a datum can be formally and numerically represented as a vector (x1,x2,...,xn). In such a n-dimensional features space, the main goal of classification is to estimate the label of a new unlabeled vector from a testing dataset through calculating the similarity among the labeled and unlabeled vectors. Generally, there is a common hypothesis that the training dataset and the testing dataset has a semblable distribution. 
 
-As a well known and widely used method, the k nearest neighbor (KNN) method, looked on as the most simple but effective method among many available classification method such as bayesian method, support vector machine and neural network. Due to its simplicity but good performance, the kNN algorithm has been considered as a top-10 data-mining method[2]. Known as a supervised learning algorithm, its working mechanism is fairly easy to grasp: for a given test sample, KNN algorithm try to get the nearest k samples in the training data set based on a specific distance metric, and then predict according to the information of these samples. In a classification problem, the vote method is usually applied to predict the class of one test samples. i.e. label this sample the most common class among the k nearest neighbors. In the past few decades, some researches are also carried on to replace the vote method with other case based reasoning method, for instance, [3][4] used evidence KNN based on the Dempster-Shafer Theory to extend the classical vote method.
+As a well known and widely used method, the k nearest neighbor (KNN) method, looked on as the most simple but effective method among many available classification method such as bayesian method, support vector machine and neural network. Due to its simplicity but good performance, the kNN algorithm has been considered as a top-10 data-mining method~\cite{ref_article2}. Known as a supervised learning algorithm, its working mechanism is fairly easy to grasp: for a given test sample, KNN algorithm try to get the nearest k samples in the training data set based on a specific distance metric, and then predict according to the information of these samples. In a classification problem, the vote method is usually applied to predict the class of one test samples. i.e. label this sample the most common class among the k nearest neighbors. In the past few decades, some researches are also carried on to replace the vote method with other case based reasoning method, for instance, ~\cite{ref_article3}~\cite{ref_article4} used evidence KNN based on the Dempster-Shafer Theory to extend the classical vote method.
 
-Also, there are two issues often come into being discussed in the research: The First is about the similarity and distance compute between different vectors. recently many new algorithm has been proposed to solve this issue, Lin et al. [5] proposed a similarity compute method via fusing neighborhood information. In this proposed algorithm, both the euclidean distance and the neighbor information is considered simultaneously, the two metric is combined together to measure the similarity between samples. Yung-Kyun Noh et al.[6] proposed a generative metric learning method to enhance the performance of kNN algorithm. The second issue is about the selection of optimal value of k for a given data set. The general kNN algorithm simply  assume the whole data set share a same value of k, which is actually not proper and inaccurate for a finite and non-uniformly distributed data set.Recently, many new method has been generate to find the k value adaptively or determine a k value for different sample respectively,  Nicolás García-Pedrajas et al. [7] propose a algorithm to obtain local k value with a simple and fast procdeure, Zhang et al. [8] propose to learn a correlation matrix to reconstruct test data points by training data to assign different k values to different test data points.
+Also, there are two issues often come into being discussed in the research: The First is about the similarity and distance compute between different vectors. recently many new algorithm has been proposed to solve this issue, Lin et al. ~\cite{ref_article5} proposed a similarity compute method via fusing neighborhood information. In this proposed algorithm, both the euclidean distance and the neighbor information is considered simultaneously, the two metric is combined together to measure the similarity between samples. Yung-Kyun Noh et al.~\cite{ref_article6} proposed a generative metric learning method to enhance the performance of kNN algorithm. The second issue is about the selection of optimal value of k for a given data set. The general kNN algorithm simply  assume the whole data set share a same value of k, which is actually not proper and inaccurate for a finite and non-uniformly distributed data set.Recently, many new method has been generate to find the k value adaptively or determine a k value for different sample respectively,  Nicolás García-Pedrajas et al. ~\cite{ref_article7} propose a algorithm to obtain local k value with a simple and fast procdeure, Zhang et al. ~\cite{ref_article8} propose to learn a correlation matrix to reconstruct test data points by training data to assign different k values to different test data points.
 
-The drawbacks of the foregoing methods is obvious, they ignore the uncertainty the training data sample itself. As we all know, the training dataset is composed of a group of labeled data samples, the label itself usually decided by some experts however, could be imprecise or even incorrect.While the label information of the k neighbors is combined to make the ultimate decision, the uncertainty of each point also accumulate. In this case, the accuracy of the kNN algorithm will decrease to some extent. Fortunately, a lot of additional and available information can used to quantify the uncertainty of the label of the sample itself. In a recommendation system, a rate of users or votes of experts of a history result could be considerated when quantify the uncertainties. For instance, Zhu et al.[9] described a a real-world decision support system for multi-disciplinary treatment called MdtDSS, the core recommend system predict a new patient's therapeutic regimen based on the historic patients. The ultimate therapy of one patient is voted by a group of doctor which reflect the doctors' opinion. The vote result of one doctor express if he/she approve the ultimate therapy of this person. Obviously, we can construct some connection between the vote result and the uncertainties.
+The drawbacks of the foregoing methods is obvious, they ignore the uncertainty the training data sample itself. As we all know, the training dataset is composed of a group of labeled data samples, the label itself usually decided by some experts however, could be imprecise or even incorrect.While the label information of the k neighbors is combined to make the ultimate decision, the uncertainty of each point also accumulate. In this case, the accuracy of the kNN algorithm will decrease to some extent. Fortunately, a lot of additional and available information can used to quantify the uncertainty of the label of the sample itself. In a recommendation system, a rate of users or votes of experts of a history result could be considerated when quantify the uncertainties. For instance, Zhu et al.~\cite{ref_article9} described a a real-world decision support system for multi-disciplinary treatment called MdtDSS, the core recommend system predict a new patient's therapeutic regimen based on the historic patients. The ultimate therapy of one patient is voted by a group of doctor which reflect the doctors' opinion. The vote result of one doctor express if he/she approve the ultimate therapy of this person. Obviously, we can construct some connection between the vote result and the uncertainties.
 
-In this paper, we define a method to quantify the uncertainties of samples in the training dataset with extra information, later, we fuse both the uncertainty and the label information as the evidence of that sample in the k nearest neighbors. Then, as to combine all these evidences, we use Dempster-shafer theory to accumulate  all these evidences to decide which class a test sample belongs to. Later, we proposed two strategy to select the optimal k value for a specific test sample based on the combined evidences. At last, we carry on a series of experiments with the data in the MdtDSS mentioned in [9] to verify our method.
+In this paper, we define a method to quantify the uncertainties of samples in the training dataset with extra information, later, we fuse both the uncertainty and the label information as the evidence of that sample in the k nearest neighbors. Then, as to combine all these evidences, we use Dempster-shafer theory to accumulate  all these evidences to decide which class a test sample belongs to. Later, we proposed two strategy to select the optimal k value for a specific test sample based on the combined evidences. At last, we carry on a series of experiments with the data in the MdtDSS mentioned in ~\cite{ref_article9} to verify our method.
 
 This paper is organized as follows: In section 2, we discuss related work on kNN algorithms. In section 3, we introduce the Dempster-shafer evidence theory and the MdtDSS. In section 4, we present the modified evidence-theory based on the uncertainty of data sample and the 2 algorithms upon optimal k value selection for this sample. Finally, in the section 5, we carry on several experiments and present results.
 
 
 \section{Related Work}
-Although the majority vote rule make the kNN algorithm more simple and easier to carry, it is based on a assumption that each of the K nearest neighbors is equally important. In practice, the circumstances can be more complex.Intuitively, the closer the neighbor, the more possible that the unknown vector f will be in the class of this neighbor. In 1995, Thierry Denœux[3] unprecedentedly define the frame of discernment [10] of a kNN method, and used  the distance of samples to measure the mass function of one sample. Our own work is a extend to his work.
+Although the majority vote rule make the kNN algorithm more simple and easier to carry, it is based on a assumption that each of the K nearest neighbors is equally important. In practice, the circumstances can be more complex.Intuitively, the closer the neighbor, the more possible that the unknown vector f will be in the class of this neighbor. In 1995, Thierry Denœux~\cite{ref_article3} unprecedentedly define the frame of discernment ~\cite{ref_article10} of a kNN method, and used  the distance of samples to measure the mass function of one sample. Our own work is a extend to his work.
 
-To replace the majority vote rule, some researchers are also prone to looking on the relationship between the global  and local probability distribution. For a small training data, Sunsern Cheamanunkul [11] propose a simple k-NN rule that takes into account the labels of all of the neighbors, rather than just the most common label. In his approach, relative entropy is used to measure the relationship between the global  and local probability distribution.
+To replace the majority vote rule, some researchers are also prone to looking on the relationship between the global  and local probability distribution. For a small training data, Sunsern Cheamanunkul ~\cite{ref_article11} propose a simple k-NN rule that takes into account the labels of all of the neighbors, rather than just the most common label. In his approach, relative entropy is used to measure the relationship between the global  and local probability distribution.
 
 \section{Preliminary}
 \subsection{Dempster-Shafer theory}
-As a generalization of the Bayesian theory of subjective probability, Dempster Shafer theory was proposed in 1976 in [10]. It is a general framework for reasoning with uncertainty data. This theory provide a model to express know and unknown directly of different sources, and the ability to combine all the evidence. It mainly contains 2 crucial steps: Basic Belief Assignment(BBA) and evidence combination.
+As a generalization of the Bayesian theory of subjective probability, Dempster Shafer theory was proposed in 1976 in ~\cite{ref_article10}. It is a general framework for reasoning with uncertainty data. This theory provide a model to express know and unknown directly of different sources, and the ability to combine all the evidence. It mainly contains 2 crucial steps: Basic Belief Assignment(BBA) and evidence combination.
 
 In the first step, let U represent a non-empty set of mutually exclusive and exhaustive propositions called the frame of decrement. The power set $2^{U}$ is all subsets of the set U, which includes both the empty set  and the entire set U. For the frame of discernment U, the function m:$2^{u}$ $\rightarrow$ [0,1] is a basic probability assignment (BPA) also called a mass function. This function satisfies the following two conditions: 
 
@@ -127,7 +127,7 @@ the K called Normalization factor is a measure of the amount of conflict among m
 
 \subsection{Dempster-Shafer theory based kNN algorithm}
 
-Also known as the evidence-theory based kNN (EKNN) ,the Dempster-Shafer theory based kNN algorithm was proposed by Thierry Denux [3] in 1995. He first established the connection between the multidimensional vector space in the KNN algorithm and the frame of discernment in DS evidence theory. In this approach, each neighbor of a pattern is considered as evidence supporting some hypotheses about the class membership of that pattern. The BPAs are calculated for each of the k nearest neighbors. The belief of each hypothese is obtained by aggregating BPAs using Dempster’s rule of combination. His contribution can be summarized as 2 points: (1)generalized a way to compute the BPA value of  the each k nearest neighbor respectively based on the distance to the unlabeled data sample (2) applied the combination rule into the kNN algorithm with a special form. Our own research take both the DS evidence theory and the uncertainty of neighbors is a extension to Thierry's work which will be presented in this section.
+Also known as the evidence-theory based kNN (EKNN) ,the Dempster-Shafer theory based kNN algorithm was proposed by Thierry Denux ~\cite{ref_article3} in 1995. He first established the connection between the multidimensional vector space in the KNN algorithm and the frame of discernment in DS evidence theory. In this approach, each neighbor of a pattern is considered as evidence supporting some hypotheses about the class membership of that pattern. The BPAs are calculated for each of the k nearest neighbors. The belief of each hypothese is obtained by aggregating BPAs using Dempster’s rule of combination. His contribution can be summarized as 2 points: (1)generalized a way to compute the BPA value of  the each k nearest neighbor respectively based on the distance to the unlabeled data sample (2) applied the combination rule into the kNN algorithm with a special form. Our own research take both the DS evidence theory and the uncertainty of neighbors is a extension to Thierry's work which will be presented in this section.
 
 In a classification problem, the training data set can be regarded as a collection on N P-dimensional training samples represented by $X=\{x^i=(x_1^i,...,x_p^i)|i=1,...,N\}$  , every sample in the data set belongs to one and only one class from M classes $C=\{C_1,...,C_M\}$. In the very beginning, each sample in the training data is labeled a class in C with a certain degree of uncertainty, which will be discussed in detail in the following section.The labeled data set can be represented as a dualistic relationship (X,L), where L is the set of labels, that can be used to classify new patterns.
 
@@ -216,17 +216,17 @@ Similarly, according to DS combination rule, for each class q:
 \end{split}
 \end{equation}
 
-Although $UC^i$ has been discussed in [3] as the imperfect labeling, our own approach is different intrinsically. In our approach, we do not change the basic form of equation (5), i.e. we assume one neighbor only belongs  to one specific class in spite of uncertainty rather than two or more possible classes. Moreover,  we think $UC^i$ is independent with the distance, and can be accessed easily with some extra information of $x^i$. Here we use a opinion set to describe the extra information, we define it as OpS:
+Although $UC^i$ has been discussed in ~\cite{ref_article3} as the imperfect labeling, our own approach is different intrinsically. In our approach, we do not change the basic form of equation (5), i.e. we assume one neighbor only belongs  to one specific class in spite of uncertainty rather than two or more possible classes. Moreover,  we think $UC^i$ is independent with the distance, and can be accessed easily with some extra information of $x^i$. Here we use a opinion set to describe the extra information, we define it as OpS:
 
 \begin{definition}
  $OpS^i$ describes the extra information set of $x^i$, it can be a set of votes information, ratings information, or other reasonable information which illustrate experts' or users' subjective opinions on whether $x^i$ should be labeled with $C_q$.
 \end{definition}
 
-In practical applications, for the kNN algorithm, the label of each sample is decided by a group of people, usually by authoritative experts. $OpS^i$ is such a set which contains the opinions. OpS is accessible in many problems. For example, [9] introduce a medical therapy recommendation system based on kNN algorithm, for each patient in the training data set,  the ultimate therapy is voted by at least 5 doctors. The most voted therapy is used to label this patient. Here, the vote results of doctors' make up the OpS of this patient.
+In practical applications, for the kNN algorithm, the label of each sample is decided by a group of people, usually by authoritative experts. $OpS^i$ is such a set which contains the opinions. OpS is accessible in many problems. For example, ~\cite{ref_article9} introduce a medical therapy recommendation system based on kNN algorithm, for each patient in the training data set,  the ultimate therapy is voted by at least 5 doctors. The most voted therapy is used to label this patient. Here, the vote results of doctors' make up the OpS of this patient.
 
 Intuitively, the consistency of doctors' opinions reflects the complexity of making decisions. If all doctors vote to the same therapy, the case of that patient is not complex and clear to make a decision, while for a multi-vote-result situation, the case of that patient can be sophisticated and controversial so that the divergence come out. 
 
-We use the information entropy(IE) [12] of $OpS^i$ to quantify its consistency:
+We use the information entropy(IE) ~\cite{ref_article12} of $OpS^i$ to quantify its consistency:
 
 \begin{equation}
 H(OpS^i) =- \sum_{c \in C} P_{ic} \cdot log (P_{ic})
@@ -348,7 +348,7 @@ UC_0e^{-H(OpS^i)\beta_u}& \text{condition 2}
 
 \section{Experiment and Discussion}
 \subsection{experiment for UCEkNN and optimal k value selection}
-To testify our proposed two models(UCEkNN, optimal k value selection), we conduct two experiments which is \textbf{experiment I} (for UCEkNN) and \textbf{experiment II}(for optimal k value selection) using the same real data set in the MdtDSS mentioned in [9]. The size of the dataset is 3340 if we only used it to examine the general kNN Algorithm, however, only1455 of them contain the voting information which can be used in our uncertainty based method. 
+To testify our proposed two models(UCEkNN, optimal k value selection), we conduct two experiments which is \textbf{experiment I} (for UCEkNN) and \textbf{experiment II}(for optimal k value selection) using the same real data set in the MdtDSS mentioned in ~\cite{ref_article9}. The size of the dataset is 3340 if we only used it to examine the general kNN Algorithm, however, only1455 of them contain the voting information which can be used in our uncertainty based method. 
 
 In the 1455 instances which have OpS, the average size of OpS is 8 which means there are 8 doctor voting to one patient on average. We repeat the two experiment 3 times respectively based on 3 different subsets of the 1455 instances. Each of the subsets are divided into 3 segments which have different function. The 3 segments are training data set, verification data set and testing data set. \textbf{experiment I and II} use different part of the 3 segments: (1)\textbf{experiment I} use the training data set (2) \textbf{experiment II} using the training data set, verification data set and testing data set at the same time. The length of each segment during the 3 reduplicative experiments is illustrated as follows:
 
@@ -407,62 +407,50 @@ The \textbf{experiment II} felicitously simulate a realistic scene where the kNN
 To verify the efficiency of our proposed L-Sure algorithm and intensify the comparison against the normal UCEkNN algorithm, we conduct an experiment using the same data set with experiment 2,    and the capacity of the training, verification, and testing data set is  610,347,239 respectively. In our experiment, the value of L varies in the range of 0 to 16, and the result is as follows:
 
 \begin{figure}
-\includegraphics[width=\textwidth]{fig.jpg}
+\includegraphics[width=\textwidth]{fig.jpg}}
 \caption{the red curve represents the normal UCEkNN while the blue curve represents UCEkNN with L-Sure algorithm. This figure shows that when L meets 6 to 11, the error times is lower than that without using L-Sure algorithm.} \label{fig1}
 \end{figure}
 
 
 
 
-
------------------------------------------------------------------------------------------------
-
-
-
-\begin{equation}
-x + y = z
-\end{equation}
-
-
-
-
-For citations of references, we prefer the use of square brackets
-and consecutive numbers. Citations using labels or the author/year
-convention are also acceptable. The following bibliography provides
-a sample reference list with entries for journal
-articles~\cite{ref_article1}, an LNCS chapter~\cite{ref_lncs1}, a
-book~\cite{ref_book1}, proceedings without editors~\cite{ref_proc1},
-and a homepage~\cite{ref_url1}. Multiple citations are grouped
-\cite{ref_article1,ref_lncs1,ref_book1},
-\cite{ref_article1,ref_book1,ref_proc1,ref_url1}.
-%
-% ---- Bibliography ----
-%
-% BibTeX users should specify bibliography style 'splncs04'.
-% References will then be sorted and formatted in the correct style.
-%
-% \bibliographystyle{splncs04}
-% \bibliography{mybibliography}
-%
 \begin{thebibliography}{8}
 \bibitem{ref_article1}
-Author, Xiaofeng Zhu, Xuelong Li, and Shichao Zhang:Block-row sparse multiview multilabel learning for image classification.  IEEE Trans. Cybernet. 46, 2 (2016), 450–461. 
+Zhu, Xiaofeng , X. Li , and S. Zhang . "Block-Row Sparse Multiview Multilabel Learning for Image Classification." IEEE TRANSACTIONS ON CYBERNETICS 46.2(2016):450.
 
-\bibitem{ref_lncs1}
-Author, F., Author, S.: Title of a proceedings paper. In: Editor,
-F., Editor, S. (eds.) CONFERENCE 2016, LNCS, vol. 9999, pp. 1--13.
-Springer, Heidelberg (2016). \doi{10.10007/1234567890}
+\bibitem{ref_article2}
+Wu, Xindong , et al. "Top 10 algorithms in data mining." Knowledge and Information Systems 14.1(2008):1-37.
 
-\bibitem{ref_book1}
-Author, F., Author, S., Author, T.: Book title. 2nd edn. Publisher,
-Location (1999)
+\bibitem{ref_article3}
+Denoeux, Thierry . "A k-nearest neighbor classification rule based on Dempster-Shafer theory." Systems Man & Cybernetics IEEE Transactions on 25.5(1995):804-813.
 
-\bibitem{ref_proc1}
-Author, A.-B.: Contribution title. In: 9th International Proceedings
-on Proceedings, pp. 1--2. Publisher, Location (2010)
+\bibitem{ref_article4}
+Wang, Lei , L. Khan , and B. Thuraisingham . "An Effective Evidence Theory Based K-Nearest Neighbor (KNN) Classification." 2008 IEEE/WIC/ACM International Conference on Web Intelligence and Intelligent Agent Technology IEEE, 2009.
 
-\bibitem{ref_url1}
-LNCS Homepage, \url{http://www.springer.com/lncs}. Last accessed 4
-Oct 2017
+\bibitem{ref_article5}
+Lin, Yaojin , et al. "A new nearest neighbor classifier via fusing neighborhood information." Neurocomputing 143(2014):164-169.
+
+\bibitem{ref_article6}
+Noh, Yung Kyun , B. T. Zhang , and D. D. Lee . "Generative Local Metric Learning for Nearest Neighbor Classification." IEEE Trans Pattern Anal Mach Intell PP.99(2018):106-118.
+
+\bibitem{ref_article7}
+Garciapedrajas, Nicolas , J. A. R. Del Castillo , and G. Cerruelagarcia . "A Proposal for Local k Values for k-Nearest Neighbor Rule." IEEE Transactions on Neural Networks & Learning Systems 28.2(2015):470.
+
+\bibitem{ref_article8}
+Zhang, Shichao , et al. "Learning k for kNN Classification." ACM Transactions on Intelligent Systems and Technology 8.3(2017):1-19. 
+
+\bibitem{ref_article9}
+Zhang, Yan , et al. "A Multi-disciplinary Medical Treatment Decision Support System with intelligent treatment recommendation." IEEE International Conference on Computer & Communications IEEE, 2017.
+
+\bibitem{ref_article10}
+Rota, Gian Carlo . "297 ppG. Shafer, A Mathematical Theory of Evidence, Princeton University Press (1976). " Ade Bulletin 2(1977):N/A.
+
+\bibitem{ref_article11}
+Cheamanunkul, S , and Y. Freund . "Improved kNN Rule for Small Training Sets." International Conference on Machine Learning & Applications IEEE, 2014.
+
+\bibitem{ref_article12}
+R Grey. Entropy and Information Theory. ENTROPY AND INFORMATION THEORY. 2012.
+
+
 \end{thebibliography}
 \end{document}
