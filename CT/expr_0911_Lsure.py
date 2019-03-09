@@ -42,12 +42,12 @@ for L in range(1,18):
             trainDataLabel,testDataLabel2,statsData,votesData,40,alpha,belta,C)
     aimClassDic,neibourSamplesLabelDic,neibourBindingMassDic=knn_ware. DSRuleWithLSureVoteInfo(
             trainDataLabel,testDataLabel2,statsData,votesData,40,L,alpha,belta,C)
-    aimClassDic2,neibourSamplesLabelDic2,neibourBindingMassDic2=knn_ware. DSRuleLocalWeightLSureVoteInfo(
-            trainDataLabel,testDataLabel2,statsData,votesData,40,L,alpha,belta,C)
-    aimClassDic3,neibourSamplesLabelDic3,neibourBindingMassDic3=knn_ware. DSRuleLocalWeightLSureVoteInfoWithGlobalWeight(
-            trainDataLabel,testDataLabel2,statsData,votesData,40,L,alpha,belta,C)
-    aimClassDic4,neibourSamplesLabelDic4,neibourBindingMassDic4=knn_ware. DSRuleLocalBayesianWeightLSureVoteInfo(
-            trainDataLabel,testDataLabel2,statsData,votesData,40,L,alpha,belta,C)
+#    aimClassDic2,neibourSamplesLabelDic2,neibourBindingMassDic2=knn_ware. DSRuleLocalWeightLSureVoteInfo(
+#            trainDataLabel,testDataLabel2,statsData,votesData,40,L,alpha,belta,C)
+#    aimClassDic3,neibourSamplesLabelDic3,neibourBindingMassDic3=knn_ware. DSRuleLocalWeightLSureVoteInfoWithGlobalWeight(
+#            trainDataLabel,testDataLabel2,statsData,votesData,40,L,alpha,belta,C)
+#    aimClassDic4,neibourSamplesLabelDic4,neibourBindingMassDic4=knn_ware. DSRuleLocalBayesianWeightLSureVoteInfo(
+#            trainDataLabel,testDataLabel2,statsData,votesData,40,L,alpha,belta,C)
     
     error1=0
     error2=0
@@ -59,29 +59,29 @@ for L in range(1,18):
             error1+=1
         if aimClassDic[label].keys()[0] != statsData[label][12]:
             error2+=1
-        if aimClassDic2[label].keys()[0] != statsData[label][12]:
-            error3+=1
-        if aimClassDic3[label].keys()[0] != statsData[label][12]:
-            error4+=1
-        if aimClassDic4[label].keys()[0] != statsData[label][12]:
-            error5+=1
+#        if aimClassDic2[label].keys()[0] != statsData[label][12]:
+#            error3+=1
+#        if aimClassDic3[label].keys()[0] != statsData[label][12]:
+#            error4+=1
+#        if aimClassDic4[label].keys()[0] != statsData[label][12]:
+#            error5+=1
 
     print(L)   
     print(error1)
     print(error2)
-    print(error3)
-    print(error4)
-    print(error5)
+#    print(error3)
+#    print(error4)
+#    print(error5)
     errorList1.append(error1)
     errorList2.append(error2)
-    errorList3.append(error3)
-    errorList4.append(error4)
-    errorList5.append(error5)
+#    errorList3.append(error3)
+#    errorList4.append(error4)
+#    errorList5.append(error5)
           
 
 x=range(1,18)
 plt.plot(x,errorList1,color="red")
 plt.plot(x,errorList2,color="blue")
-plt.plot(x,errorList3,color="green")
-plt.plot(x,errorList4,color="yellow")
-plt.plot(x,errorList5,color="black")
+#plt.plot(x,errorList3,color="green")
+#plt.plot(x,errorList4,color="yellow")
+#plt.plot(x,errorList5,color="black")
