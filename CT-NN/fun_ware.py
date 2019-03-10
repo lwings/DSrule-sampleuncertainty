@@ -7,7 +7,9 @@ def get_datadic():
     data=get_data()
     label=[0,1,29,32,36,37,38,39,41,42,45,46]
     res=3 #ct_scheme 
-
+#statsData: 0-11 digits_____label 
+#           12 digit________class
+#           13 digit________side
     for i in data:
         vector=i[2].encode('unicode-escape').decode('string_escape').split(',')
         if(len(vector)>40):
@@ -21,7 +23,7 @@ def get_datadic():
                 else:
                     nv[j]=vector[label[j]]
             nv[-1]=i[res+side*9]
-            
+ 
             if nv[-1] is None or nv[-1]==0 or nv[-1]==8:
                 continue                                                    
             nv.append(side)
