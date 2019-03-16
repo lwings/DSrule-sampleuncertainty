@@ -71,7 +71,7 @@ prediction = add_layer(xs, 12, 8,  activation_function=tf.nn.softmax)
 # the error between prediction and real data
 cross_entropy = tf.reduce_mean(-tf.reduce_sum(ys * tf.log(prediction),
                                               reduction_indices=[1]))       # loss
-train_step = tf.train.GradientDescentOptimizer(0.03).minimize(cross_entropy)
+train_step = tf.train.GradientDescentOptimizer(0.04).minimize(cross_entropy)
 
 sess = tf.Session()
 # important step
@@ -83,7 +83,7 @@ else:
     init = tf.global_variables_initializer()
 sess.run(init)
 
-for i in range(5000):
+for i in range(800):
     sess.run(train_step, feed_dict={xs: x_data, ys: y_data})
     if i % 50 == 0:
         prediction_value = sess.run(prediction, feed_dict={xs: x_data})
@@ -91,7 +91,7 @@ for i in range(5000):
 
 prediction_value = sess.run(prediction, feed_dict={xs: x_test_data})
 
-
+print("ultimate rate")
 print(accuracy(prediction_value.tolist(),testLabel))
 
 
