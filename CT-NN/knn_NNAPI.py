@@ -113,12 +113,12 @@ def trainNNAndPredict(trainVectorSeq,testVectorSeq):
         sess.run(train_step, feed_dict={xs: x_data, ys: y_data})
         if i % 50 == 0:
             prediction_value = sess.run(prediction, feed_dict={xs: x_data})
-            print(accuracy(prediction_value.tolist(),trainLabel))
+#            print(accuracy(prediction_value.tolist(),trainLabel))
     
     prediction_value = sess.run(prediction, feed_dict={xs: x_test_data})
     
-    print("ultimate rate")
-    print(accuracy(prediction_value.tolist(),testLabel))
+#    print("ultimate rate")
+#    print(accuracy(prediction_value.tolist(),testLabel))
     return accuracy(prediction_value.tolist(),testLabel)
 
 
