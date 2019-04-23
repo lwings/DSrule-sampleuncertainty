@@ -5,7 +5,8 @@ statsData,votesData,sideDic,statsWithVotesInfo = fun_ware.getDataWithVoteInfo()
 
 K=50
 trainDataLabel=[k for k,v in statsData.items() if k<=3000]
-testDataLabel=[k for k,v in statsData.items() if k>3000]
+testDataLabel=[k for k,v in statsData.items() if k>3000 and k<=3451]
+verifyDataLabel=[k for k,v in statsData.items() if k>3451]
 #neibourSamplesLabelDic,knnAimClassDic= knn_ware.knnClassMajorRule(
 #    trainDataLabel,testDataLabel,statsData,K)
 
