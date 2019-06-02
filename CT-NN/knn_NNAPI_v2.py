@@ -93,6 +93,7 @@ prediction_2 = add_layer(prediction_1, 500, 500,  activation_function=tf.nn.sigm
 prediction_4= add_layer(prediction_2, 500, 8,  activation_function=tf.nn.softmax)
     
 # the error between prediction and real data
+
 cross_entropy = tf.reduce_mean(-tf.reduce_sum(ys * tf.log(prediction_4),
                                               reduction_indices=[1]))       # loss
 train_step = tf.train.GradientDescentOptimizer(0.1).minimize(cross_entropy)
