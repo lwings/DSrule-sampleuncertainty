@@ -1,6 +1,7 @@
 from import_data import get_data
 from import_data import get_data_D
 import knn_ware
+import random
 import math
 def get_datadic():
     data_dic={}
@@ -438,3 +439,35 @@ def localBayesianWeightLsureEntropyComp(localVotesData,L):
             for v in firstVoteDic.values():
                firstEntropyDic[pid] -= ( v/len(voteInfo) )  * math.log( ( v/len(voteInfo) ) ,2)
     return firstEntropyDic    
+
+def getRandomDataWithVoteInfo(L=12,C=5):
+    statsData,votesData,sideDic,statsWithVotesInfo = getDataWithVoteInfo()
+    randData=GeneRandList(L)
+    statsData={k:randData[k]+[random.sample(range(0,C),1)[0],0] for k in range(len(randData))}
+    votesData={k:[[1,1,1,1]] for k,v in statsData.items()}
+    return statsData,votesData,sideDic,range(len(statsData))
+    
+    
+    
+    
+    
+def GeneRandList(L=2):
+    ret=[]
+    temp=[]
+    Gene(ret,temp,L)
+    return ret
+    
+def Gene(ret,temp,L):
+    if len(temp)==L:
+        ret.append(list(temp))
+        return
+    temp.append(0)
+    Gene(ret,list(temp),L)
+    temp=temp[:-1]
+    temp.append(1)
+    Gene(ret,list(temp),L)
+
+    
+    
+
+    

@@ -1,0 +1,18 @@
+[0] Config.pm:302> INFO - This is Biber 2.11
+[0] Config.pm:305> INFO - Logfile is 'thesis.blg'
+[42] biber-darwin:313> INFO - === 一 11 11, 2019, 18:09:03
+[62] Biber.pm:371> INFO - Reading 'thesis.bcf'
+[160] Biber.pm:857> INFO - Found 1 citekeys in bib section 0
+[172] Biber.pm:3976> INFO - Processing section 0
+[182] Biber.pm:4136> INFO - Looking for bibtex format file 'bib/thesis.bib' for section 0
+[184] bibtex.pm:1500> INFO - LaTeX decoding ...
+[233] bibtex.pm:1316> INFO - Found BibTeX data source 'bib/thesis.bib'
+[240] Utils.pm:193> WARN - Duplicate entry key: 'Schank1982Dynamic' in file 'bib/thesis.bib', skipping ...
+[241] Utils.pm:193> WARN - Duplicate entry key: 'article' in file 'bib/thesis.bib', skipping ...
+[258] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[258] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[258] Biber.pm:3804> INFO - Sorting list 'none/global//global/global' of type 'entry' with template 'none' and locale 'en-US'
+[258] Biber.pm:3810> INFO - No sort tailoring available for locale 'en-US'
+[259] bbl.pm:617> INFO - Writing 'thesis.bbl' with encoding 'UTF-8'
+[260] bbl.pm:720> INFO - Output to thesis.bbl
+[260] Biber.pm:110> INFO - WARNINGS: 2

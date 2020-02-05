@@ -10,8 +10,23 @@ class Node(object):
         self.children=[]
     def append(self,newNode):
         self.children.append(newNode)
+    def height(self):
+        if len(self.children)==0:
+            return 1
+        max=1
+        for c in self.children:
+            if max<c.height():
+                max=c.height()
+        return max+1
+    def totalNodes(self):
+        if len(self.children)==0:
+            return 1
+        ret=0
+        for c in self.children:
+            ret+=c.totalNodes()
+        return ret
         
-statsData,votesData,sideDic,statsWithVotesInfo = fun_ware.getDataWithVoteInfo()
+statsData,votesData,sideDic,statsWithVotesInfo = fun_ware.getRandomDataWithVoteInfo()
 
 root_id = statsWithVotesInfo[0]
 root=Node(id=root_id)
@@ -109,16 +124,92 @@ def slideFilter(input=[],k=3):
 #        print(i)
 #        aimClass,realClass,trace,times=AddNode(kk,root,statsWithVotesInfo[i],[])
 #        totaltimes+=times
-#        timesList.append(totaltimes)
-#        xlabel.append(i)
+#        if i%50==0:
+#            timesList.append(totaltimes)
+#            xlabel.append(i)
 #
 #
 #    plt.plot(xlabel,timesList,label=str(kk))
 #    plt.legend()
 #plt.show()
 ####################Calculate scale single times
+#plt.figure()
+#for kk in [5,10,25]:
+#
+#    timesList=[]
+#    xlabel=[]
+#    root_id = statsWithVotesInfo[0]
+#    root=Node(id=root_id)
+#    totaltimes=0
+#    for i in range(1,len(statsWithVotesInfo)):
+#        print(i)
+#        aimClass,realClass,trace,times=AddNode(kk,root,statsWithVotesInfo[i],[])
+#        if i%50 ==0:
+#            timesList.append(times)
+#            xlabel.append(i)
+#
+##    x=np.array(xlabel)
+##    y=np.array(timesList)
+##    z1=np.polyfit(x,y,7)
+##    p1 = np.poly1d(z1)
+##    yvals=p1(x)
+##    plt.plot(x,yvals,label="k="+str(kk))
+##    slideFilter(timesList,k=10)
+#    plt.plot(xlabel,timesList,label="k="+str(kk))
+#    plt.legend()
+#plt.show()
+
+############################Diff Amount Class 
+#kk=10
+#plt.figure()
+#for cc in [3,30]:
+#    statsData,votesData,sideDic,statsWithVotesInfo = fun_ware.getRandomDataWithVoteInfo(C=cc)
+#    timesList=[]
+#    xlabel=[]
+#    root_id = statsWithVotesInfo[0]
+#    root=Node(id=root_id)
+#    totaltimes=0
+#    for i in range(1,len(statsWithVotesInfo)):
+#        print(i)
+#        aimClass,realClass,trace,times=AddNode(kk,root,statsWithVotesInfo[i],[])
+#        if i%50 ==0:
+#            timesList.append(times)
+#            xlabel.append(i)
+#
+##    x=np.array(xlabel)
+##    y=np.array(timesList)
+##    z1=np.polyfit(x,y,7)
+##    p1 = np.poly1d(z1)
+##    yvals=p1(x)
+##    plt.plot(x,yvals,label="k="+str(kk))
+##    slideFilter(timesList,k=10)
+#    plt.plot(xlabel,timesList,label="C="+str(cc))
+#    plt.legend()
+#plt.show()
+        ####################Calculate BT height
+#plt.figure()
+#plt.yticks([0,1,2,3,4,5,6,7,8,9,10,11,12])
+#for kk in [5,7,9,10,15]:
+#
+#    timesList=[]
+#    xlabel=[]
+#    root_id = statsWithVotesInfo[0]
+#    root=Node(id=root_id)
+#    totaltimes=0
+#    for i in range(1,len(statsWithVotesInfo)):
+#        print(i)
+#        aimClass,realClass,trace,times=AddNode(kk,root,statsWithVotesInfo[i],[])
+#        if i%1 ==0:
+#            timesList.append(root.height()+kk*0.035)
+#            xlabel.append(i)
+#
+#    
+#    plt.plot(xlabel,timesList,label="k="+str(kk))
+#    plt.legend()
+#plt.show()
+####################Calculate BT nodes
 plt.figure()
-for kk in [5,10,25]:
+for kk in [5,7,10,15,25]:
 
     timesList=[]
     xlabel=[]
@@ -128,21 +219,13 @@ for kk in [5,10,25]:
     for i in range(1,len(statsWithVotesInfo)):
         print(i)
         aimClass,realClass,trace,times=AddNode(kk,root,statsWithVotesInfo[i],[])
-        if i%10 ==0:
-            timesList.append(times)
+        if i%1 ==0:
+            timesList.append(root.totalNodes()+kk*0.01)
             xlabel.append(i)
 
-    x=np.array(xlabel)
-    y=np.array(timesList)
-    z1=np.polyfit(x,y,7)
-    p1 = np.poly1d(z1)
-    yvals=p1(x)
-    plt.plot(x,yvals,label="k="+str(kk))
-#    slideFilter(timesList,k=10)
-#    plt.plot(xlabel,timesList,label="k="+str(kk))
+    
+    plt.plot(xlabel,timesList,label="k="+str(kk))
     plt.legend()
 plt.show()
-
-
 
 
